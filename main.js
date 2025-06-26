@@ -49,7 +49,8 @@ const app = initializeGeminiChat();
 // Removed old workflow initialization since we're using the new Gemini chat implementation
 
 // WebSocket Server Setup
-const wss = new WebSocketServer({ port: 8080 });
+const port = process.env.PORT || 8080; // Render injects this
+const wss = new WebSocketServer({ port, host: "0.0.0.0" });
 logEvent("SERVER_START", "WebSocket server started on port 8080", {
   port: 8080,
 });
